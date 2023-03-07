@@ -1,0 +1,64 @@
+#navbar {
+    background-color: black;
+    width: 100%;
+    padding: 10px;
+    text-align: start;
+    
+}
+
+#navbar a {
+    text-decoration: none;
+    color: white;
+    
+    font-size: 25px;
+    margin: 25px;
+}
+
+#navbar .log-out {
+    text-align: end;
+}
+
+input, textarea {
+    margin-bottom: 10px;
+}
+
+table, tr, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+    padding: 5px;
+}
+
+#comment-table th {
+    color:white; 
+    background-color:black;
+}
+
+#comment-table {
+    width: 200px;
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.error {
+    position:absolute;
+    background-color: red;
+    color: black;
+    font-weight: bold;
+    min-height: 50%;
+    min-width: 100%;
+    text-align: center;
+    padding: 150px 0;
+    font-size: 50px;
+    
+}
+
+.error a {
+    color: black;
+    text-decoration: underline;
+}
+
+.error a:hover {
+    color: gray;
+}
