@@ -17,6 +17,7 @@
 
         @if (Auth::check())
         <a class="log-out" href="{{route('logout')}}">LogOut</a>
+        <a href="{{route('keyview')}}">API</a>
         @endif
         @if (!Auth::check())
         <a href="{{ route('login') }}">Login</a>
