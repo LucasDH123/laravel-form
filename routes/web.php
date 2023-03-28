@@ -38,3 +38,4 @@ Route::get('/delete_post', [Postcontroller::class, "deletepost"])->name('deletep
 
 Route::get('/token', [APIController::class, 'getKeyView'])->name('keyview')->middleware('auth');
 Route::get('/token/create', [APIController::class, 'newKey'])->name('newkey')->middleware('auth'); 
+Route::get('/token/invalidate', [APIController::class, 'invalidateKey'])->name('invalidatekey')->middleware('auth'); 
