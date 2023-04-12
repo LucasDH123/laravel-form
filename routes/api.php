@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/all_posts', [APIGetController::class, 'getAllPosts'])->middleware('auth:sanctum');
-Route::get('/single_post/{id}', [APIGetController::class, 'getSinglePosts'])->middleware('auth:sanctum');
+Route::get('/single_post', [APIGetController::class, 'getSinglePost'])->middleware('auth:sanctum');
 Route::get('/all_comments', [APIGetController::class, 'getAllComments'])->middleware('auth:sanctum');
-Route::get('/single_comment', [APIGetController::class, 'getSingleComments'])->middleware('auth:sanctum');
+Route::get('/single_comment', [APIGetController::class, 'getSingleComment'])->middleware('auth:sanctum');
 
