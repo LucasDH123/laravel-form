@@ -12,9 +12,9 @@
 
     <form action="{{ route('loggingIn')}}" method="post">
     {{ csrf_field() }}
-        <input type="text" name="name" placeholder="username"><br>
-        <input type="password" name="password" placeholder="password"><br>
-        <input type="submit" value="login">
+        <input type="text" dusk="login_name" name="name" placeholder="username"><br>
+        <input type="password" dusk="login_password" name="password" placeholder="password"><br>
+        <input type="submit" dusk="login_button" value="login">
     </form>
 
     @if (Session::has('msg'))
