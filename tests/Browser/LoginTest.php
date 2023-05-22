@@ -20,10 +20,11 @@ class LoginTest extends DuskTestCase
     public function TestLoginFunctionalityTrue(): void
     {
         $this->browse(function (Browser $browser) {
-            $browser->value('@login_name', 'Lucas');
-            $browser->value('@login_password', 'Lelzdbk1dw!');
-            $browser->press('@login_button');
-            $browser->assertSee('Current user: Lucas');
+            $browser->visit('/login')
+                ->type('@login_user', 'Lucas')
+                ->type('password', 'Lelzdbk1dw!')
+                ->press('@login_button')
+                ->assertPathIs('/dashboard');
         });
     }
 
