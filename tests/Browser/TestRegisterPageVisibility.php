@@ -6,16 +6,14 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class ExampleTest extends DuskTestCase
+class TestRegisterPageVisibility extends DuskTestCase
 {
-    /**
-     * A basic browser test example.
-     */
-    public function testHomepageVisibility(): void
+
+    public function testRegisterPageVisibility(): void
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/')
-                    ->assertSee('Home');
+            $browser->visit('/register')
+                    ->assertSee('Register');
         });
     }
 }

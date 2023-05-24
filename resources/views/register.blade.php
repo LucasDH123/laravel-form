@@ -10,18 +10,18 @@
 <h1>Register</h1>
     <form action='{{route("regiUser")}}' method="post">
     {{ csrf_field() }}
-        <input type="email" name="email" placeholder="email"><br>
-        <input type="text" name="name" placeholder="username"><br>
-        <input type="password" name="password" placeholder="password"><br>
-        <input type="password" name="password_confirmation" placeholder="confirm password"><br>
-        <input type="submit" value="make account"><br>
+        <input type="email" dusk="register_email" name="email" placeholder="email"><br>
+        <input type="text" dusk="register_name"  name="name" placeholder="username"><br>
+        <input type="password" dusk="register_password" name="password" placeholder="password"><br>
+        <input type="password" dusk="register_password_confirm" name="password_confirmation" placeholder="confirm password"><br>
+        <input type="submit" dusk="register_button" value="make account"><br>
     </form><br>
 
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+                <li dusk="register_error ">{{ $error }}</li>
             @endforeach
         </ul>
     </div>
