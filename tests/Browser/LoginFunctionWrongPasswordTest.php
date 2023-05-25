@@ -6,15 +6,15 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class TestLoginFUnctionalityWrongPassword extends DuskTestCase
+class LoginFunctionWrongPasswordTest extends DuskTestCase
 {
-    public function TestLoginFUnctionalityWrongPassword(): void
+    public function testWrongPassword(): void
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/login')
-                ->type('@login_name', 'Lucas')
-                ->type('@login_password', 'a')
-                ->press('@login_button')
+                ->type('name', 'Lucas')
+                ->type('password', 'a')
+                ->press('login')
                 ->assertSee('password does not match');
         });
     }

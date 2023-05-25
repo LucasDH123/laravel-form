@@ -6,17 +6,15 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class TestLoginFunctionalityTrue extends DuskTestCase
+class LoginFunctionTrueTest extends DuskTestCase
 {
-
-
-    public function TestLoginFunctionalityTrue(): void
+    public function testTrue(): void
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/login')
-                ->type('@login_user', 'Lucas')
-                ->type('@login_password', 'Lelzdbk1dw!')
-                ->press('@login_button')
+                ->type('name', 'Lucas')
+                ->type('password', 'Lelzdbk1dw!')
+                ->press('login')
                 ->assertSee('Home');
         });
     }

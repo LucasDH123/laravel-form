@@ -6,17 +6,13 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class MakePostTest extends DuskTestCase
+class LoginFunctionVisibilityTest extends DuskTestCase
 {
-
-    public function MakePostTest(): void
+    public function testVisibility(): void
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/login')
-                    ->value('@login_name', 'Lucas')
-                    ->value('@login_password', 'Lelzdbk1dw!')
-                    ->press('@login_button');
+                    ->assertSee('enter your information below.');
         });
     }
-
 }
