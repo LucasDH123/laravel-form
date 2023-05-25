@@ -1,21 +1,20 @@
 @extends('layout.layout')
 
-@section('titel', 'Login')
+@section('titel', 'account')
 
 @section('navbar')
     @parent
 @endsection
 
 @section('content')
-    <h1>Login</h1>
-    <p>enter your information below.</p>
-
-    <form action="{{ route('loggingIn')}}" method="post">
-    {{ csrf_field() }}
-        <input type="text" name="name" placeholder="username"><br>
-        <input type="password"  name="password" placeholder="password"><br>
-        <input type="submit"  value="login">
-    </form>
+    <h1>Account</h1>
+    <p>Welcome {{ Auth::user()->name }}</p>
+    <ul>
+    <li>account details</li>
+    <li><a href="{{route('msgview'}}">messages</a></li>
+    <li>Your posts</li>
+    <li>your comments</li> 
+    </ul>
 
     @if (Session::has('msg'))
     <div>

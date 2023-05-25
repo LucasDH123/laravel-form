@@ -8,6 +8,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\APIController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,7 @@ Route::get('/post_detail/{post}', [PostController::class, "showDetail"])->name('
 Route::get('/update_post/{id}', [ViewController::class, "updatePostView"])->name('updatepost')->middleware('auth');
 Route::get('/confirm_deletion', [PostController::class, "deletionView"])->name('deleteview')->middleware('auth');
 Route::get('/user_messages', [MessageController::class, "messageView"])->name('msgview')->middleware('auth');
+Route::get('/account', [AccountController::class, "view"])->name('accountmenu')->middleware('auth');
 
 Route::post('/register_user', [AuthenticationController::class, "registerUser"])->name('regiUser');
 Route::post('/login_user', [AuthenticationController::class, "userLogin"])->name('loggingIn');
