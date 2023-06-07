@@ -25,7 +25,7 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|min:5',
             'content' => 'required|max:200|min:10'
-        ]);
+        ]);  
 
         $post = new Post();
         $userID = Auth::id();

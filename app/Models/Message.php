@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Date;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,13 +12,12 @@ class Message extends Model
 
     protected $attributes = array(
         'message' => '',
-        'from_user' => 0,
-        'to_user' => 0,
-        'time' => '',
-        'date' => ''
+        'sender_id' => 0,
+        'recipient_id' => 0,
+        
     );
-    protected $table = 'message';
-    protected $primaryKey = 'message_id';
+    protected $table = 'private_messages';
+    protected $primaryKey = 'id';
 
     public function user()
     {
