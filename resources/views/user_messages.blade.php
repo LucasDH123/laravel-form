@@ -14,31 +14,31 @@
 <br>
 
 @if (request()->is('*/inbox')) 
-    <table>
-        <tr>
-            <th>Sender</th><th>date recieved</th><th>Message</th>
-        </tr>
-        
-        @foreach ($messages AS $message)
-            @if ($message->sender_id !== Auth::user()->id)
-        <tr>
-            <td>
-                @foreach ($users AS $user)
-                @if ($user->id === $message->sender_id)
-                    {{$user->name}}
+        <table>
+            <tr>
+                <th>Sender</th><th>date recieved</th><th>Message</th>
+            </tr>
+
+            @foreach ($messages AS $message)
+                @if ($message->sender_id !== Auth::user()->id)
+            <tr>
+                <td>
+                    @foreach ($users AS $user)
+                    @if ($user->id === $message->sender_id)
+                        {{$user->name}}
+                    @endif
+                    @endforeach
+                </td>
+                <td>
+                    {{$message->created_at}}
+                </td>
+                <td>
+                    {{$message->message}}
+                </td>
+            </tr>
                 @endif
-                @endforeach
-            </td>
-            <td>
-                {{$message->created_at}}
-            </td>
-            <td>
-                {{$message->message}}
-            </td>
-        </tr>
-            @endif
-        @endforeach
-    </table>
+            @endforeach
+        </table>
 @endif
 
 @if (request()->is('*/outbox')) 
@@ -47,9 +47,10 @@
         <tr>
             <th>Target</th><th>date recieved</th><th>Message</th>
         </tr>
-
+       
         @foreach ($messages AS $message)
             @if ($message->sender_id = Auth::user()->id)
+            
         <tr>
             <td>
                 @foreach ($users AS $user)
