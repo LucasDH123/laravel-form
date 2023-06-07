@@ -8,6 +8,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\APIController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,9 @@ Route::get('/create_post', [ViewController::class, "createPostView"])->name('cre
 Route::get('/post_detail/{post}', [PostController::class, "showDetail"])->name('detail');
 Route::get('/update_post/{id}', [ViewController::class, "updatePostView"])->name('updatepost')->middleware('auth');
 Route::get('/confirm_deletion', [PostController::class, "deletionView"])->name('deleteview')->middleware('auth');
-Route::get('/user_messages', [MessageController::class, "messageView"])->name('msgview')->middleware('auth');
+Route::get('/user_messages/{box}', [MessageController::class, "messageView"])->name('msgview')->middleware('auth');
+Route::get('/message_form', [MessageController::class, "messageFormView"])->name('messageform')->middleware('auth');
+Route::get('/account', [AccountController::class, "view"])->name('accountmenu')->middleware('auth');
 
 Route::post('/register_user', [AuthenticationController::class, "registerUser"])->name('regiUser');
 Route::post('/login_user', [AuthenticationController::class, "userLogin"])->name('loggingIn');
@@ -37,6 +40,7 @@ Route::post('/store_post', [PostController::class, "store"])->name('storepost')-
 Route::post('/post_comment', [CommentController::class, "store"])->name('postComment')->middleware('auth');
 Route::post('/edit_post', [PostController::class, "editPost"])->name('editpost')->middleware('auth');
 Route::get('/delete_post', [Postcontroller::class, "deletepost"])->name('deletepost')->middleware('auth');
+Route::post('/send_message', [MessageController::class, "DirectMessageStore"])->name('sendMessage')->middleware('auth');
 
 Route::get('/token', [APIController::class, 'getKeyView'])->name('keyview')->middleware('auth');
 Route::get('/token/create', [APIController::class, 'newKey'])->name('newkey')->middleware('auth'); 
