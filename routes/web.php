@@ -32,6 +32,7 @@ Route::get('/confirm_deletion', [PostController::class, "deletionView"])->name('
 Route::get('/user_messages/{box}', [MessageController::class, "messageView"])->name('msgview')->middleware('auth');
 Route::get('/message_form', [MessageController::class, "messageFormView"])->name('messageform')->middleware('auth');
 Route::get('/account', [AccountController::class, "view"])->name('accountmenu')->middleware('auth');
+Route::get('/user_details', [AccountController::class, "dataview"])->name('userDetailView')->middleware('auth');
 
 Route::post('/register_user', [AuthenticationController::class, "registerUser"])->name('regiUser');
 Route::post('/login_user', [AuthenticationController::class, "userLogin"])->name('loggingIn');
@@ -41,6 +42,8 @@ Route::post('/post_comment', [CommentController::class, "store"])->name('postCom
 Route::post('/edit_post', [PostController::class, "editPost"])->name('editpost')->middleware('auth');
 Route::get('/delete_post', [Postcontroller::class, "deletepost"])->name('deletepost')->middleware('auth');
 Route::post('/send_message', [MessageController::class, "DirectMessageStore"])->name('sendMessage')->middleware('auth');
+Route::post('/edit_account', [AccountController::class, "editAccountInfo"])->name('editAccount')->middleware('auth');
+
 
 Route::get('/token', [APIController::class, 'getKeyView'])->name('keyview')->middleware('auth');
 Route::get('/token/create', [APIController::class, 'newKey'])->name('newkey')->middleware('auth'); 
