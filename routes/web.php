@@ -34,6 +34,7 @@ Route::get('/message_form', [MessageController::class, "messageFormView"])->name
 Route::get('/account', [AccountController::class, "view"])->name('accountmenu')->middleware('auth');
 Route::get('/user_details', [AccountController::class, "dataview"])->name('userDetailView')->middleware('auth');
 
+
 Route::post('/register_user', [AuthenticationController::class, "registerUser"])->name('regiUser');
 Route::post('/login_user', [AuthenticationController::class, "userLogin"])->name('loggingIn');
 Route::get('/logout', [AuthenticationController::class, "logout"])->name('logout')->middleware('auth');
@@ -43,6 +44,7 @@ Route::post('/edit_post', [PostController::class, "editPost"])->name('editpost')
 Route::get('/delete_post', [Postcontroller::class, "deletepost"])->name('deletepost')->middleware('auth');
 Route::post('/send_message', [MessageController::class, "DirectMessageStore"])->name('sendMessage')->middleware('auth');
 Route::post('/edit_account', [AccountController::class, "editAccountInfo"])->name('editAccount')->middleware('auth');
+Route::post('/change_password', [AccountController::class, 'editPassword'])->name('editPassword')->middleware("auth");
 
 
 Route::get('/token', [APIController::class, 'getKeyView'])->name('keyview')->middleware('auth');

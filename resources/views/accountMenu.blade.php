@@ -10,7 +10,7 @@
     <h1>Account</h1>
     <p>Welcome {{ Auth::user()->name }}</p>
     <ul>
-    <li>account details</li>
+    <li><a href="{{route('userDetailView')}}">account details</a></li>
     <li><a href="{{route('msgview', ['box' => 'inbox'])}}">messages</a></li>
     <li>Your posts</li>
     <li>your comments</li> 
