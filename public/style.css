@@ -63,3 +63,19 @@ table, tr, th, td {
     color: gray;
 
 }
+
+.areYouSure {
+    position: absolute;
+    top: 40%;
+    left:30%;
+    border:2px solid black;
+    background-color: lightgrey;
+    width: 500px;
+    padding: 5px;
+}
+
+.noButton
+{
+    position: relative;
+    left:10px;
+}

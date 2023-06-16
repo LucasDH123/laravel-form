@@ -7,10 +7,10 @@
 @endsection
 
 @section('content')
-    <h1>Account</h1>
+    <h1>User</h1>
     <p>Welcome {{ Auth::user()->name }}</p>
     <ul>
-    <li><a href="{{route('userDetailView')}}">account details</a></li>
+    <li><a href="{{route('userDetailView')}}">user details</a></li>
     <li><a href="{{route('msgview', ['box' => 'inbox'])}}">messages</a></li>
     <li>Your posts</li>
     <li>your comments</li> 

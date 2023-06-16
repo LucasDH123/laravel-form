@@ -8,7 +8,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\APIController;
 use App\Http\Controllers\MessageController;
-use App\Http\Controllers\AccountController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,8 +31,11 @@ Route::get('/update_post/{id}', [ViewController::class, "updatePostView"])->name
 Route::get('/confirm_deletion', [PostController::class, "deletionView"])->name('deleteview')->middleware('auth');
 Route::get('/user_messages/{box}', [MessageController::class, "messageView"])->name('msgview')->middleware('auth');
 Route::get('/message_form', [MessageController::class, "messageFormView"])->name('messageform')->middleware('auth');
-Route::get('/account', [AccountController::class, "view"])->name('accountmenu')->middleware('auth');
-Route::get('/user_details', [AccountController::class, "dataview"])->name('userDetailView')->middleware('auth');
+Route::get('/user', [UserController::class, "view"])->name('usermenu')->middleware('auth');
+Route::get('/user_details', [UserController::class, "dataview"])->name('userDetailView')->middleware('auth');
+Route::get('/confirm_deletion/{id}', [UserController::class, "confirmDeletionView"])->name('confirmdelete')->middleware('auth'); 
+Route::get('/admin_edit_form/{id}', [UserController::class, 'editUserInfoAdminView'])->name('admineditview')->middleware('auth');     
+Route::get('/delete_user/{id}', [UserController::class, "deleteUser"])->name('deleteuser')->middleware('auth'); 
 
 
 Route::post('/register_user', [AuthenticationController::class, "registerUser"])->name('regiUser');
@@ -43,9 +46,10 @@ Route::post('/post_comment', [CommentController::class, "store"])->name('postCom
 Route::post('/edit_post', [PostController::class, "editPost"])->name('editpost')->middleware('auth');
 Route::get('/delete_post', [Postcontroller::class, "deletepost"])->name('deletepost')->middleware('auth');
 Route::post('/send_message', [MessageController::class, "DirectMessageStore"])->name('sendMessage')->middleware('auth');
-Route::post('/edit_account', [AccountController::class, "editAccountInfo"])->name('editAccount')->middleware('auth');
-Route::post('/change_password', [AccountController::class, 'editPassword'])->name('editPassword')->middleware("auth");
-
+Route::post('/edit_user', [UserController::class, "editUserInfo"])->name('editUser')->middleware('auth');
+Route::post('/change_password', [UserController::class, 'editPassword'])->name('editPassword')->middleware("auth");
+Route::post('/admin_edit_user', [UserController::class, 'editUserInfoAdminMenu'])->name('adminedit')->middleware('auth');
+Route::post('/admin_delete_user/{id}', [UserController::class, 'AdminDeleteUser'])->name('admindelete')->middleware('auth'); 
 
 Route::get('/token', [APIController::class, 'getKeyView'])->name('keyview')->middleware('auth');
 Route::get('/token/create', [APIController::class, 'newKey'])->name('newkey')->middleware('auth'); 

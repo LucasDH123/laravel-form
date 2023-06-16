@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('content');
             $table->integer('rating');
-            $table->foreignIdFor(User::class);
+            $table->foreignIdFor(User::class)->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -28,7 +28,7 @@
 
     <div id="userInfoForm">
     <h3>update your account info</h3>
-    <form name="change-user-info" action="{{route('editAccount')}}" method="post">
+    <form name="change-user-info" action="{{route('editUser')}}" method="post">
     {{ csrf_field() }}
         <input type="text" class="account_name" name="name" value="{{Auth::user()->name}}"><br>
         <input type="text" class="account_name" name="email" value="{{Auth::user()->email}}"><br>
@@ -40,9 +40,9 @@
     <h3>Change your password</h3>
     <form name="change-user-password" action="{{route('editPassword')}}" method="post">
     {{ csrf_field() }}
-        <input type="password" class="account_password" name="new_password" placeholder="new password"><br>
-        <input type="password" class="account_confirm_password" name="confirm_password" placeholder="confirm new password"><br>
-        <input type="submit" class=account_submit name="submit" value="update">
+        <input type="password" class="password" name="password" placeholder="new password"><br>
+        <input type="password" class="password_confirmation" name="password_confirmation" placeholder="confirm password"><br>
+        <input type="submit" class="submit" name="submit" value="update">
     </form>
     </div>
 
@@ -57,8 +57,8 @@
         <tr>
             <td>{{$user->name}}</td><td>{{$user->email}}</td>
             <td>
-                <a href="{{route('editAccount')}}">EDIT</a>
-                <a href="/delete_user?id={{$user->id}}">DELETE</a>
+                <a href="{{route('admineditview', ['id' => $user->id])}}">EDIT</a>
+                <a href="{{route('confirmdelete', ['id' => $user->id])}}">DELETE</a>
             </td>
         </tr>
         @endforeach
